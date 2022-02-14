@@ -1,1 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    	<meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="Description" content="Andrew Steven's art.">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#84a9ce">
+        <meta name="theme-color" content="#660066" />
+    	<title>Steven Andrews Art</title>
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" media="screen and (max-width: 853px)" href="cellphone.css"/>
+    <script src="comics/comics.js"></script>
+    <script src="main.js"></script>
+</head>
+<body id="particles-js">
+<img src="comics/workplace.jpg" draggable="false" id="comicLoader" height="0" width="0" style="z-index: -100; top: -500px; left: -100px; position: absolute;" />
 
+<script src="particles.js"></script>
+<nav>
+    <div class="desktopLinkWrapper">
+    <a href="index.html" class="desktopLink" style="display: inline-block; color: #ebebeb;" align="middle">Home</a><a href="about.html" class="desktopLink" style="display: inline-block;" align="middle">About</a><a href="gallery.html" class="desktopLink" style="display: inline-block;" align="middle">Gallery</a><a href="blog.html" class="desktopLink" style="display: inline-block;" align="middle">Blog</a><a href="contact.html" class="desktopLink" style="display: inline-block;" align="middle">Contact</a>
+    </div>
+    <div id="cellphoneMenu" onclick="menu()" style="display: none;"></div>
+    <span id="cellphoneTitle" style="display: none;">Steven Andrews<br>Art</span>
+</nav>
+<spacer></spacer>
+<div class="cellphoneMenuPanel" style="display: none;">
+    <a href="index.html" class="cellphoneLink" style="display: none; margin-top: 15px" align="middle">Home</a><br><a href="about.html" class="cellphoneLink" style="display: none; align="middle">About</a><br><a href="Gallery.html" class="cellphoneLink" style="display: none;" align="middle">Gallery</a><br><a href="blog.html" class="cellphoneLink" style="display: inline-block;" align="middle">Blog</a><a href="contact.html" class="cellphoneLink" style="display: none;" align="middle">Contact</a>
+</div>
+<main>
+    <img id="logoImg" src="logo.png" draggable="false" width="450" style="display: block; margin-left: auto; margin-right: auto;">
+    <img id="loadspin" src="laserload.png" draggable="false">
+    <div id="contentDisplay" style="opacity: 0; z-index: -1; transition: opacity 0.2s linear;">
+    <h3>Daily Comic</h3><h4 id="comicTitle"></h4><h4 id="comicDate"></h4>
+    <div class="comic"><img src="arrowL.png" onclick="return comic(-1);" draggable="false" class="comicArrows" style="float: left; margin-left: 10px;"/><img src="arrowR.png" onclick="return comic(1);" draggable="false" class="comicArrows" style="float: right; margin-right: 10px;" /></div>
+</div>
+</main>
+<footer>
+    <table class="fTable" style="margin-left: auto; margin-right: auto; margin-bottom: 0; margin-top: 0; height: 145px; table-layout: fixed;
+width: 80%;">
+    <tbody>
+    <tr>
+
+    <td class="foot" align="left">
+        <address>
+        Steven Andrews
+        </address>
+    </td>
+
+    <td class="foot" align="center" style="text-align: center; margin-left: auto; margin-right: auto; display: table-cell; vertical-align: middle; width=250px !important;">
+        Steven Andrews Art<br>
+        © 2019-<script type="text/javascript">document.write(new Date().getFullYear());</script>, Steven Andrews<br><br>
+        <a class="footerLink" href="" class="whiteLink"></a>
+    </td>
+
+    <td class="foot" align="right">
+        Website designed by<br><a href="http://alexwindsor.ca">Alex Windsor</a>
+    </td>
+    <!-- Cellphone footer -->
+    <td class="cellphoneFoot" style="display: none;" align="right">
+        Steven Andrews<br>Art website<br>
+        © 2019-<script type="text/javascript">document.write(new Date().getFullYear());</script>, Steven Andrews<br><br>
+        <a class="footerLink" href="" class="whiteLink"></a>
+    </td>
+    </tr>
+    </tbody>
+    </table>
+</footer>
+</body>
+</html>
