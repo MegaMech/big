@@ -33,6 +33,8 @@ window.onload = function()
     comicLoader = document.getElementById("comicLoader");
     //comicLoader.src = "url('comics/"+comics[0].FileName+"')";
     comicLoader.src = "comics/"+comics[0].FileName;
+
+    window.addEventListener('resize', vh);
 }
 
 function menu()
@@ -50,16 +52,39 @@ function menu()
 function displayComic() {
     minimizeNav();
     comic(0);
+    // On PC
+    if (screen.width >= 800)
+    {
+        document.addEventListener('mousemove', e => {
+            //if (timer) {
+            //    clearTimeout(timer);
+            //}
+            //timer=setTimeout(mouseStopped,300);
+        });
+    }
+}
+
+function mouseStopped(){                                 // the actual function that is called
+    document.getElementById("gui").style.display = "none";
 }
 
 function minimizeNav() {
     document.getElementsByTagName("nav")[0].style.display = "none";
-    document.getElementById("comicWrap").style.display = "grid";
+    //document.getElementById("gui").style.display = "grid";
 }
 
 function maximizeNav() {
     document.getElementsByTagName("nav")[0].style.display = "block";
-    document.getElementById("comicWrap").style.display = "none";
+    //document.getElementById("gui").style.display = "none";
+}
+
+function vh() {
+    let v = document.getElementsByTagName("footer")[0].offsetHeight;
+    let v2 = (100 * v) / Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+    console.log(v2);
+    var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+    console.log((100 - v2)+"vh");
+    document.getElementsByClassName("comic")[0].style.minHeight = (100 - v2)+"vh";
 }
 
 var width;
@@ -69,15 +94,17 @@ function comic(direction)
     position += direction;
     if (position === -1) {position = comicsLength - 1;}
     if (position === comicsLength) {position = 0;}
-    var urlString = "comics/"+comics[position].FileName;
+    var urlString = "url('comics/"+comics[position].FileName+"')";
+    //var urlString = "comics/"+comics[position].FileName;
+
     console.log(urlString);
-    document.getElementById("comicPanel").src = getMeta(urlString);
-    //document.getElementsByClassName("comic")[0].style.backgroundImage = urlString;
+    //document.getElementById("comicPanel").src = getMeta(urlString);
+    document.getElementsByClassName("comic")[0].style.backgroundImage = urlString;
     //document.getElementById("comicTitle").innerHTML = comics[position].Title;
     //document.getElementById("comicDate").innerHTML = comics[position].Date;
 }
 
-function getMeta(url) {   
+function getMeta(url) {
     const img = new Image();
     img.addEventListener("load", function() {
         //document.getElementById("comicPanel").width = this.naturalWidth;

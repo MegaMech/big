@@ -21,10 +21,6 @@ body
     margin-top: 10%;
     transition: width 1s ease-in-out, margin-top 1s ease-in-out;
 }
-#comicWrap {
-    display: none;
-    height: 100%;
-}
 #comicPanel {
     padding: 0;
     display: block;
@@ -170,10 +166,14 @@ main
     background-color: white;
     margin-left: auto;
     margin-right: auto;
-    padding-bottom: 250px;
+    /*padding-bottom: 250px;*/
     font-size: 20px;
     z-index: 10;
     background-color: inherit;
+}
+#gui {
+    position: absolute;
+    bottom: 0;
 }
 p {
     padding-left: 10px;
@@ -196,7 +196,7 @@ user-drag: none;
 }
 .comic {
     width: 100%;
-    min-height: 650px;
+    min-height: 85vh;
     background-color: lightgrey;
     margin-left: auto;
     margin-right: auto;
@@ -231,7 +231,7 @@ footer
     position: absolute;
     bottom: 0;
     width: 100%;
-    min-height: 145px;
+    min-height: 15vh;
     color: white;
     font-size: 24px;
     z-index: -1;
