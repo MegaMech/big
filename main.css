@@ -21,6 +21,19 @@ body
     margin-top: 10%;
     transition: width 1s ease-in-out, margin-top 1s ease-in-out;
 }
+#comicWrap {
+    display: none;
+    height: 100%;
+}
+#comicPanel {
+    padding: 0;
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    max-height: 100vh;
+    margin: auto;
+}
+
 #loadspin {
     display: block;
     margin-left: auto;
@@ -42,7 +55,7 @@ body
 nav
 {
     height: 100%;
-    width: 100%;
+    min-width: auto;
 }
 nav a
 {
@@ -152,7 +165,7 @@ spacer
 main
 {
     display: block;
-    width: 100%;
+    min-width: 80%;
     min-height: 700px;
     background-color: white;
     margin-left: auto;

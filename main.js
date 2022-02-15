@@ -1,4 +1,7 @@
 var position;
+var comicLoader;
+const comicsLength = Object.keys(comics).length;
+
 window.onload = function()
 {
     var menus = document.getElementsByClassName("cellphoneMenuPanel")[0];
@@ -8,11 +11,12 @@ window.onload = function()
     particlesJS.load('particles-js', 'particles.json', function() {
       console.log('callback - particles.js config loaded');
     });
-     setTimeout(function(){
+
+    setTimeout(function(){
          document.getElementById("loadspin").style.opacity = 0;
          //document.getElementById("logoImg").style.width = "450px";
          //document.getElementById("logoImg").style.marginTop = "2%";
-         setTimeout(function(){
+        setTimeout(function(){
              document.getElementsByTagName("body")[0].style.overflow = "auto";
              document.getElementsByTagName("body")[0].style.position = "relative";
              //document.getElementsByTagName("nav")[0].style.zIndex = "15";
@@ -23,9 +27,12 @@ window.onload = function()
              document.getElementsByTagName("footer")[0].style.opacity = "1";
              document.getElementById("loadspin").remove();
              position = Object.keys(comics).length - 1;
-         }, 1000);
+        }, 1000);
 
-     }, 1000);
+    }, 1000);
+    comicLoader = document.getElementById("comicLoader");
+    //comicLoader.src = "url('comics/"+comics[0].FileName+"')";
+    comicLoader.src = "comics/"+comics[0].FileName;
 }
 
 function menu()
@@ -47,24 +54,39 @@ function displayComic() {
 
 function minimizeNav() {
     document.getElementsByTagName("nav")[0].style.display = "none";
+    document.getElementById("comicWrap").style.display = "grid";
 }
 
 function maximizeNav() {
     document.getElementsByTagName("nav")[0].style.display = "block";
+    document.getElementById("comicWrap").style.display = "none";
 }
 
+var width;
+var heighth;
 function comic(direction)
 {
-    position = position + direction;
-    if (position === -1) {position = Object.keys(comics).length - 1;}
-    if (position === Object.keys(comics).length) {position = 0;}
-        console.log(position);
-    var urlString = "url('comics/"+comics[position].FileName+"')";
+    position += direction;
+    if (position === -1) {position = comicsLength - 1;}
+    if (position === comicsLength) {position = 0;}
+    var urlString = "comics/"+comics[position].FileName;
     console.log(urlString);
-    document.getElementsByClassName("comic")[0].style.backgroundImage = urlString;
+    document.getElementById("comicPanel").src = getMeta(urlString);
+    //document.getElementsByClassName("comic")[0].style.backgroundImage = urlString;
     //document.getElementById("comicTitle").innerHTML = comics[position].Title;
     //document.getElementById("comicDate").innerHTML = comics[position].Date;
 }
+
+function getMeta(url) {   
+    const img = new Image();
+    img.addEventListener("load", function() {
+        //document.getElementById("comicPanel").width = this.naturalWidth;
+        //document.getElementById("comicPanel").heighth = this.naturalHeight;
+    });
+    img.src = url;
+    return img.src;
+}
+
 function footerLink()
 {
     var o = "ew";

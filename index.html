@@ -19,12 +19,12 @@
     <script src="main.js"></script>
 </head>
 <body id="particles-js">
-<img src="comics/workplace.jpg" draggable="false" id="comicLoader" height="0" width="0" style="z-index: -100; top: -500px; left: -100px; position: absolute;" />
+<img src="comics/batman.jpg" draggable="false" id="comicLoader" height="0" width="0" style="z-index: -100; top: -500px; left: -100px; position: absolute;" />
 
 <script src="particles.js"></script>
 
 <div class="cellphoneMenuPanel" style="display: none;">
-    <a href="index.html" class="cellphoneLink" style="display: none; margin-top: 15px" align="middle">Home</a><br><a href="about.html" class="cellphoneLink" style="display: none; align="middle">About</a><br><a href="Gallery.html" class="cellphoneLink" style="display: none;" align="middle">Gallery</a><br><a href="blog.html" class="cellphoneLink" style="display: inline-block;" align="middle">Blog</a><a href="contact.html" class="cellphoneLink" style="display: none;" align="middle">Contact</a>
+    <a href="index.html" class="cellphoneLink" style="display: none; margin-top: 15px" align="middle">Home</a><br><a href="about.html" class="cellphoneLink" style="display: none;" align="middle">About</a><br><a href="Gallery.html" class="cellphoneLink" style="display: none;" align="middle">Gallery</a><br><a href="blog.html" class="cellphoneLink" style="display: inline-block;" align="middle">Blog</a><a href="contact.html" class="cellphoneLink" style="display: none;" align="middle">Contact</a>
 </div>
 <main>
     
@@ -39,8 +39,11 @@
                     <button onclick="displayComic();">This weeks comic</button>
                 </div>
             </nav>
-            <img src="arrowL.png" onclick="return comic(-1);" draggable="false" class="comicArrows" style="float: left; margin-left: 10px;"/>
-            <img src="arrowR.png" onclick="return comic(1);" draggable="false" class="comicArrows" style="float: right; margin-right: 10px;" />
+            <div id="comicWrap">
+                <img src="comics/batman.jpg" id="comicPanel" alt="comic panel" draggable="false">
+                <img src="arrowL.png" onclick="return comic(-1);" draggable="false" class="comicArrows" style="float: left; margin-left: 10px;"/>
+                <img src="arrowR.png" onclick="return comic(1);" draggable="false" class="comicArrows" style="float: right; margin-right: 10px;" />
+            </div>
         </div>
     </div>
 </main>
