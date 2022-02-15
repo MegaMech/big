@@ -6,7 +6,7 @@
     #loadspin {
         width: 6vw !important;
     }
-  } 
+  }
   @media screen and (max-width: 853px)
   {
   nav
@@ -171,7 +171,7 @@
       }
       .comic
       {
-          width: auto;
+          width: 100%;
       }
       .foot
       {

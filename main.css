@@ -41,18 +41,8 @@ body
 /* ---- reset ---- */ body{ margin:0; font:normal 75% Arial, Helvetica, sans-serif; } canvas{ display: block; vertical-align: bottom; } /* ---- particles.js container ---- */ #particles-js{ transition: opacity 1s ease-in-out; position:absolute; width: 100%; height: 100%; background-color: #090023; background-image: url(""); background-repeat: no-repeat; background-size: cover; background-position: 50% 50%; } /* ---- stats.js ---- */ .count-particles{ background: #000022; position: absolute; top: 48px; left: 0; width: 80px; color: #13E8E9; font-size: .8em; text-align: left; text-indent: 4px; line-height: 14px; padding-bottom: 2px; font-family: Helvetica, Arial, sans-serif; font-weight: bold; } .js-count-particles{ font-size: 1.1em; } #stats, .count-particles{ -webkit-user-select: none; margin-top: 5px; margin-left: 5px; } #stats{ border-radius: 3px 3px 0 0; overflow: hidden; } .count-particles{ border-radius: 0 0 3px 3px; }
 nav
 {
-    display: block;
-    height: 40px;
+    height: 100%;
     width: 100%;
-    position: fixed;
-    overflow: hidden;
-    z-index: -1;
-    -webkit-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.75);
-    box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.75);
-    background: rgb(238, 47, 81);
-    opacity: 0;
-    transition: opacity 0.2s linear;
 }
 nav a
 {
@@ -76,6 +66,25 @@ nav a
         -o-user-drag: none;
         user-drag: none;
         -webkit-tap-highlight-color: transparent;
+}
+#buttons {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+button {
+    background-color: blue;
+    border: none;
+    border-radius: 5px;
+    width: 500px;
+    height: 200px;
+    font-size: 2em;
+}
+button active {
+    padding-top: 1px;
 }
 .desktopLinkWrapper
 {
@@ -142,9 +151,8 @@ spacer
 }
 main
 {
-    padding: 15px;
     display: block;
-    max-width: 80%;
+    width: 100%;
     min-height: 700px;
     background-color: white;
     margin-left: auto;
@@ -174,8 +182,8 @@ img {
 user-drag: none;
 }
 .comic {
-    width: 800px;
-    height: 450px;
+    width: 100%;
+    min-height: 650px;
     background-color: lightgrey;
     margin-left: auto;
     margin-right: auto;

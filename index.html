@@ -22,24 +22,27 @@
 <img src="comics/workplace.jpg" draggable="false" id="comicLoader" height="0" width="0" style="z-index: -100; top: -500px; left: -100px; position: absolute;" />
 
 <script src="particles.js"></script>
-<nav>
-    <div class="desktopLinkWrapper">
-    <a href="index.html" class="desktopLink" style="display: inline-block; color: #ebebeb;" align="middle">Home</a><a href="about.html" class="desktopLink" style="display: inline-block;" align="middle">About</a><a href="gallery.html" class="desktopLink" style="display: inline-block;" align="middle">Gallery</a><a href="blog.html" class="desktopLink" style="display: inline-block;" align="middle">Blog</a><a href="contact.html" class="desktopLink" style="display: inline-block;" align="middle">Contact</a>
-    </div>
-    <div id="cellphoneMenu" onclick="menu()" style="display: none;"></div>
-    <span id="cellphoneTitle" style="display: none;">Steven Andrews<br>Art</span>
-</nav>
-<spacer></spacer>
+
 <div class="cellphoneMenuPanel" style="display: none;">
     <a href="index.html" class="cellphoneLink" style="display: none; margin-top: 15px" align="middle">Home</a><br><a href="about.html" class="cellphoneLink" style="display: none; align="middle">About</a><br><a href="Gallery.html" class="cellphoneLink" style="display: none;" align="middle">Gallery</a><br><a href="blog.html" class="cellphoneLink" style="display: inline-block;" align="middle">Blog</a><a href="contact.html" class="cellphoneLink" style="display: none;" align="middle">Contact</a>
 </div>
 <main>
-    <img id="logoImg" src="logo.png" draggable="false" width="450" style="display: block; margin-left: auto; margin-right: auto;">
+    
     <img id="loadspin" src="laserload.png" draggable="false">
+
     <div id="contentDisplay" style="opacity: 0; z-index: -1; transition: opacity 0.2s linear;">
-    <h3>Daily Comic</h3><h4 id="comicTitle"></h4><h4 id="comicDate"></h4>
-    <div class="comic"><img src="arrowL.png" onclick="return comic(-1);" draggable="false" class="comicArrows" style="float: left; margin-left: 10px;"/><img src="arrowR.png" onclick="return comic(1);" draggable="false" class="comicArrows" style="float: right; margin-right: 10px;" /></div>
-</div>
+        <div class="comic">
+            <nav>
+                <img src="logo.png" alt="The Great Big Dig">
+                <div id=buttons>
+                    <button>Archive</button>
+                    <button onclick="displayComic();">This weeks comic</button>
+                </div>
+            </nav>
+            <img src="arrowL.png" onclick="return comic(-1);" draggable="false" class="comicArrows" style="float: left; margin-left: 10px;"/>
+            <img src="arrowR.png" onclick="return comic(1);" draggable="false" class="comicArrows" style="float: right; margin-right: 10px;" />
+        </div>
+    </div>
 </main>
 <footer>
     <table class="fTable" style="margin-left: auto; margin-right: auto; margin-bottom: 0; margin-top: 0; height: 145px; table-layout: fixed;
@@ -53,7 +56,7 @@ width: 80%;">
         </address>
     </td>
 
-    <td class="foot" align="center" style="text-align: center; margin-left: auto; margin-right: auto; display: table-cell; vertical-align: middle; width=250px !important;">
+    <td class="foot" align="center" style="text-align: center; margin-left: auto; margin-right: auto; display: table-cell; vertical-align: middle; width: 250px !important;">
         Steven Andrews Art<br>
         © 2019-<script type="text/javascript">document.write(new Date().getFullYear());</script>, Steven Andrews<br><br>
         <a class="footerLink" href="" class="whiteLink"></a>
