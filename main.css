@@ -195,6 +195,7 @@ img {
 user-drag: none;
 }
 .comic {
+    position: relative;
     width: 100%;
     min-height: 85vh;
     background-color: lightgrey;
