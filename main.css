@@ -85,14 +85,19 @@ nav a
     margin-right: auto;
 }
 button {
-    background-color: blue;
+    background-color: #090023;
     border: none;
-    border-radius: 5px;
+    border-radius: 7px;
     width: 500px;
     height: 200px;
     font-size: 2em;
+    transition-duration: 0.2s;
+    cursor: pointer;
 }
-button active {
+button:hover {
+    background-color: #080023;   
+}
+button:active {
     padding-top: 1px;
 }
 .desktopLinkWrapper
