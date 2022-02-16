@@ -91,6 +91,7 @@ button {
     width: 500px;
     height: 200px;
     font-size: 2em;
+    transition-duration: 0.2s;
 }
 button:hover {
     background-color: #080023;   
