@@ -27,9 +27,9 @@ window.onload = function()
              document.getElementsByTagName("footer")[0].style.opacity = "1";
              document.getElementById("loadspin").remove();
              position = Object.keys(comics).length - 1;
-        }, 1000);
+        }, 500);
 
-    }, 1000);
+    }, 500);
     comicLoader = document.getElementById("comicLoader");
     //comicLoader.src = "url('comics/"+comics[0].FileName+"')";
     comicLoader.src = "comics/"+comics[0].FileName;
