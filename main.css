@@ -195,9 +195,31 @@ main
     display: inline-block;
     width: 90px;
     cursor: pointer;
+    padding: 0 3px 0 3px;
+}
+#comicMenuButton:hover {
+    background-color: rgba(255, 255, 255, 0.3);
 }
 #comicMenuButton:active {
     margin-top: 2px;
+}
+#archive {
+    display: none;
+}
+#comicTable {
+    margin-left: auto;
+    margin-right: auto;
+    border: solid 2px black;
+    border-collapse:collapse;
+}
+#comicTable td {
+    border: solid 1px black;
+    padding: 5px;
+    cursor: pointer;
+}
+#comicTable th {
+    border: solid 1px black;
+    cursor: pointer;
 }
 p {
     padding-left: 10px;
@@ -244,6 +266,7 @@ user-drag: none;
 }
 .comicArrows:hover
 {
+    background-color: rgba(255, 255, 255, 0.3);
 }
 .comicArrows:active
 {

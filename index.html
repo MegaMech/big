@@ -35,15 +35,22 @@
             <nav>
                 <img src="icons/logo.png" alt="The Great Big Dig">
                 <div id=buttons>
-                    <button class="menuButtons">Comic Archive</button>
+                    <button class="menuButtons" onclick="displayArchive();">Comic Archive</button>
                     <button class="menuButtons" onclick="displayComic();">Latest Comic</button>
                 </div>
             </nav>
+            
+            <div id="archive">
+                  <table id="comicTable" style="color: black;">
+                    <tr><th width=300 onclick="sortTable(0, 'comicTable')">Title</th><th onclick="sortTable(0, 'comicTable')">Date Published</th></tr>
+                  </table>
+            </div>
+
             <div id="gui">
                 
-                <img src="icons/arrow_left.svg" onclick="return comic(-1);" draggable="false" class="comicArrows" style="float: left; margin-left: 10px; padding-right: 10px;"/>
+                <img src="icons/arrow_left.svg" onclick="return comic(-1);" draggable="false" class="comicArrows" style="float: left; padding-right: 10px;"/>
                 <img src="icons/menu.svg" id="comicMenuButton" onclick="return gotoMenu();" />
-                <img src="icons/arrow_right.svg" style="display: inline-block;" onclick="return comic(1);" draggable="false" class="comicArrows" style="float: right; margin-right: 10px; padding-left: 10px;" />
+                <img src="icons/arrow_right.svg" style="display: inline-block;" onclick="return comic(1);" draggable="false" class="comicArrows" style="float: right; padding-left: 10px;" />
             </div>
         </div>
     </div>

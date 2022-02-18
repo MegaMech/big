@@ -1,5 +1,5 @@
-var position;
-var comicLoader;
+let position = 0;
+let comicLoader;
 const comicsLength = Object.keys(comics).length;
 
 window.onload = function()
@@ -52,12 +52,46 @@ let timer = null;
 function displayComic() {
     minimizeNav();
     comic(0);
-    
+    activateMouseMoveEvent();
+}
+
+function activateMouseMoveEvent() {
     // On PC
     if (screen.width >= 800)
     {
         document.addEventListener('mousemove', mouseMoveEvent);
     }
+    
+}
+
+function displayArchive() {
+    minimizeNav();
+    document.getElementById("archive").style.display = "block";
+    let t = document.getElementById("comicTable");
+    if (t.children[0].children.length > 1) {
+        return;
+    }
+    for (i = 0; i < Object.keys(comics).length; i++)
+    {
+        let r = t.insertRow(-1);
+
+        let td = r.insertCell(0);
+
+        td.innerText = comics[i].Title;
+        td.style.textAlign = "left";
+
+        td2 = r.insertCell(1).innerText = comics[i].Date;
+
+        r.setAttribute("data-id", i);
+        r.onclick = function() {return gotoComicPanel(this);};
+    }
+}
+
+function gotoComicPanel(e) {
+    document.getElementById("archive").style.display = "none";
+    position = parseInt(e.dataset.id);
+    activateMouseMoveEvent();
+    comic(0);
 }
 
 function mouseMoveEvent() {
@@ -67,13 +101,17 @@ function mouseMoveEvent() {
     }
 
     // Move UI depending on where mouse is on screen
-    if (window.event.clientY < window.innerHeight / 2) {
+    if (window.event.clientY < document.getElementById("contentDisplay").clientHeight / 2) {
         document.getElementById("gui").style.top = 0;
         document.getElementById("gui").style.bottom = "";
         document.getElementById("gui").style.borderBottomLeftRadius = "12px";
         document.getElementById("gui").style.borderBottomRightRadius = "12px";
         document.getElementById("gui").style.borderTopLeftRadius = "0px";
         document.getElementById("gui").style.borderTopRightRadius = "0px";
+        document.getElementsByClassName("comicArrows")[0].style.borderBottomLeftRadius = "12px";
+        document.getElementsByClassName("comicArrows")[1].style.borderBottomRightRadius = "12px";
+        document.getElementsByClassName("comicArrows")[0].style.borderTopLeftRadius = "0px";
+        document.getElementsByClassName("comicArrows")[1].style.borderTopRightRadius = "0px";
     } else {
         document.getElementById("gui").style.bottom = 0;
         document.getElementById("gui").style.top = "";
@@ -81,6 +119,10 @@ function mouseMoveEvent() {
         document.getElementById("gui").style.borderTopRightRadius = "12px";
         document.getElementById("gui").style.borderBottomLeftRadius = "0px";
         document.getElementById("gui").style.borderBottomRightRadius = "0px";
+        document.getElementsByClassName("comicArrows")[0].style.borderTopLeftRadius = "12px";
+        document.getElementsByClassName("comicArrows")[1].style.borderTopRightRadius = "12px";
+        document.getElementsByClassName("comicArrows")[0].style.borderBottomLeftRadius = "0px";
+        document.getElementsByClassName("comicArrows")[1].style.borderBottomRightRadius = "0px";
     }
     
     document.getElementById("gui").style.display = "flex";
@@ -104,6 +146,8 @@ function gotoMenu() {
     document.removeEventListener('mousemove', mouseMoveEvent)
     document.getElementById("gui").style.display = "none";
     document.getElementsByClassName("comic")[0].style.backgroundImage = "none";
+
+    document.getElementById("archive").style.display = "none";
     maximizeNav();
 }
 
@@ -120,9 +164,7 @@ function maximizeNav() {
 function vh() {
     let v = document.getElementsByTagName("footer")[0].offsetHeight;
     let v2 = (100 * v) / Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-    console.log(v2);
     var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-    console.log((100 - v2)+"vh");
     document.getElementsByClassName("comic")[0].style.minHeight = (100 - v2)+"vh";
 }
 
@@ -136,8 +178,6 @@ function comic(direction)
     if (position === comicsLength) {position = 0;}
     var urlString = "url('comics/"+comics[position].FileName+"')";
     //var urlString = "comics/"+comics[position].FileName;
-
-    console.log(urlString);
     //document.getElementById("comicPanel").src = getMeta(urlString);
     document.getElementsByClassName("comic")[0].style.backgroundImage = urlString;
     //document.getElementById("comicTitle").innerHTML = comics[position].Title;
@@ -180,4 +220,59 @@ function footerLink()
     document.getElementsByClassName("footerLink")[1].href = a+d+z+c+":"+ei+ied+ioda+efjei+ijd+x+o+ehdidoe+edds+ioda+z+idf+l+x+mn+ioda+dats+agh+ioda;
     document.getElementsByClassName("footerLink")[0].innerHTML = ei+ied+ioda+efjei+ijd+x+o+ehdidoe+edds+ioda+z+idf+l+x+mn+ioda+dats+agh+ioda;
     document.getElementsByClassName("footerLink")[1].innerHTML = ei+ied+ioda+efjei+ijd+x+o+ehdidoe+edds+ioda+z+idf+l+x+mn+ioda+dats+agh+ioda;
+}
+
+function sortTable(n, e) {
+    var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+    table = document.getElementById(e);
+    switching = true;
+    // Set the sorting direction to ascending:
+    dir = "asc";
+    /* Make a loop that will continue until
+    no switching has been done: */
+    while (switching) {
+        // Start by saying: no switching is done:
+        switching = false;
+        rows = table.rows;
+        /* Loop through all table rows (except the
+        first, which contains table headers): */
+        for (i = 1; i < (rows.length - 1); i++) {
+            // Start by saying there should be no switching:
+            shouldSwitch = false;
+            /* Get the two elements you want to compare,
+            one from current row and one from the next: */
+            x = rows[i].getElementsByTagName("TD")[n];
+            y = rows[i + 1].getElementsByTagName("TD")[n];
+            /* Check if the two rows should switch place,
+            based on the direction, asc or desc: */
+            if (dir == "asc") {
+                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                    // If so, mark as a switch and break the loop:
+                    shouldSwitch = true;
+                    break;
+                }
+                } else if (dir == "desc") {
+                    if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                        // If so, mark as a switch and break the loop:
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+        }
+        if (shouldSwitch) {
+            /* If a switch has been marked, make the switch
+            and mark that a switch has been done: */
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+            // Each time a switch is done, increase this count by 1:
+            switchcount ++;
+        } else {
+            /* If no switching has been done AND the direction is "asc",
+            set the direction to "desc" and run the while loop again. */
+            if (switchcount == 0 && dir == "asc") {
+                dir = "desc";
+                switching = true;
+            }
+        }
+    }
 }
