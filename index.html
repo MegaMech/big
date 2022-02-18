@@ -30,9 +30,10 @@
 <main>
     
     <img id="loadspin" src="laserload.png" draggable="false">
-
+    
     <div id="contentDisplay" style="opacity: 0; z-index: -1; transition: opacity 0.2s linear;">
         <div class="comic">
+            <div id="endOfComics">Oh noes, end of the line!<br>Don't worry, fresh comics every week.</div>
             <nav>
                 <img src="icons/logo.png" alt="The Great Big Dig">
                 <div id=buttons>
@@ -56,9 +57,9 @@
 
             <div id="gui">
                 
-                <img src="icons/arrow_left.svg" onclick="return comic(-1);" draggable="false" class="comicArrows" style="float: left; padding-right: 10px;"/>
-                <img src="icons/menu.svg" id="comicMenuButton" onclick="return gotoMenu();" />
-                <img src="icons/arrow_right.svg" style="display: inline-block;" onclick="return comic(1);" draggable="false" class="comicArrows" style="float: right; padding-left: 10px;" />
+                <button onclick="return comic(-1);" draggable="false" class="comicArrows customButton" style="background-image: url('icons/arrow_left.svg'); float: left; padding-right: 10px;"></button>
+                <button style="background-image: url('icons/menu.svg')" class="customButton" id="comicMenuButton" onclick="return gotoMenu();"></button>
+                <button style="display: inline-block; background-image: url('icons/arrow_right.svg')" onclick="return comic(1);" draggable="false" class="comicArrows customButton" style="float: right; padding-left: 10px;"></button>
             </div>
         </div>
     </div>

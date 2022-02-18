@@ -226,7 +226,24 @@ var width;
 var heighth;
 function comic(direction)
 {
+    //if (direction == -1) {
+     //   direction = comicsLength - 1;
+    //}
     mouseMoveEvent();
+    if (position == comicsLength - 1 && direction > 0) {
+        document.getElementsByClassName("comicArrows")[1].disabled = true;
+        document.getElementById("endOfComics").style.display = "block";
+        document.getElementById("endOfComics").style.opacity = 1;
+        setTimeout(function(){
+            setTimeout(function(){
+                document.getElementById("endOfComics").style.display = "none";
+            }, 600);
+            document.getElementById("endOfComics").style.opacity = 0;
+        }, 3000);
+        return;
+    } else {
+        document.getElementsByClassName("comicArrows")[1].disabled = false;
+    }
     position += direction;
     if (position === -1) {position = comicsLength - 1;}
     if (position === comicsLength) {position = 0;}
