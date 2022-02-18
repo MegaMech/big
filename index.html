@@ -15,6 +15,7 @@
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="main.css">
     <link rel="stylesheet" type="text/css" media="screen and (max-width: 853px)" href="cellphone.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.5.3"></script>
     <script src="comics/comics.js"></script>
     <script src="main.js"></script>
 </head>
@@ -41,8 +42,15 @@
             </nav>
             
             <div id="archive">
+                <div id="search-wrapper">
+                    <div id="search-form" onclick="document.getElementById('search').focus()">
+                        <img id="img_mag" src="icons/magnifier_icon.png" width=25 height=25 />
+                        <input id="search" type="text" autofocus></input>
+                    </div>
+                </div>
                   <table id="comicTable" style="color: black;">
-                    <tr><th width=300 onclick="sortTable(0, 'comicTable')">Title</th><th onclick="sortTable(0, 'comicTable')">Date Published</th></tr>
+                    <thead><tr><th width=300 onclick="sortTable(0, 'comicTable')">Title</th><th onclick="sortTable(0, 'comicTable')">Date Published</th></tr></thead>
+                    <tbody></tbody>
                   </table>
             </div>
 

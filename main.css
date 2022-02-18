@@ -205,6 +205,37 @@ main
 }
 #archive {
     display: none;
+    padding-top: 30px;
+}
+#search-wrapper {
+    display: block;
+    width: 346px;
+    height: 33px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    background-color: white;
+    border: 2px grey solid;
+    border-radius: 10px;
+}
+#search-form {
+    display: inline;
+    width: 325px;
+    height: 30px;
+}
+#search {
+    display: inline;
+    width: 300px;
+    height: 30px;
+    border: none;
+    outline: none;
+    font-size: 1em;
+}
+#img_mag {
+    display: inline;
+    vertical-align: middle;
+    margin-left: 5px;
+    margin-bottom: 2px;
 }
 #comicTable {
     margin-left: auto;

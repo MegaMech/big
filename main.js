@@ -1,3 +1,22 @@
+const options = {
+    // isCaseSensitive: false,
+    // includeScore: false,
+    // shouldSort: true,
+    // includeMatches: false,
+    // findAllMatches: false,
+    // minMatchCharLength: 1,
+    // location: 0,
+    // threshold: 0.6,
+    // distance: 100,
+    // useExtendedSearch: false,
+    // ignoreLocation: false,
+    // ignoreFieldNorm: false,
+    keys: ["Title"]
+};
+let fuse = "";
+let pattern = "";
+let d = {};
+
 let position = 0;
 let comicLoader;
 const comicsLength = Object.keys(comics).length;
@@ -26,7 +45,7 @@ window.onload = function()
              document.getElementsByTagName("footer")[0].style.zIndex = "1";
              document.getElementsByTagName("footer")[0].style.opacity = "1";
              document.getElementById("loadspin").remove();
-             position = Object.keys(comics).length - 1;
+             position = comicsLength - 1;
         }, 500);
 
     }, 500);
@@ -35,6 +54,22 @@ window.onload = function()
     comicLoader.src = "comics/"+comics[0].FileName;
 
     window.addEventListener('resize', vh);
+}
+
+function search(list) {
+    fuse = new Fuse(list, options);
+}
+
+function search_sort_table(search_data) {
+    ct = document.getElementById("comicTable").children[1];
+    for (i = search_data.length - 1; 0 <= i; i--) {
+        for (let z = 0; ct.rows.length > z; z++) {
+            if (parseInt(ct.children[z].dataset.id) === search_data[i].item.Id) {
+                ct.prepend(ct.children[z]);
+                break;
+            }
+        }
+    }
 }
 
 function menu()
@@ -67,12 +102,31 @@ function activateMouseMoveEvent() {
 function displayArchive() {
     minimizeNav();
     document.getElementById("archive").style.display = "block";
-    let t = document.getElementById("comicTable");
-    if (t.children[0].children.length > 1) {
+    generateTable();
+
+    document.getElementById("search").addEventListener("input", (e) => {
+        pattern = document.getElementById("search").value;
+        if (pattern === "") {
+            let t = document.getElementById("comicTable").children[1];
+            for (i = 0; i <= comicsLength; i++) {
+                t.innerHTML = "";
+            }
+            generateTable();
+        } else {
+            search_sort_table(fuse.search(pattern));
+        }
+    });
+    search(comics);
+}
+
+function generateTable() {
+    let t = document.getElementById("comicTable").children[1];
+    if (t.children.length > 1) {
         return;
     }
-    for (i = 0; i < Object.keys(comics).length; i++)
+    for (i = 0; i < comicsLength; i++)
     {
+        comics[i].Id = i;
         let r = t.insertRow(-1);
 
         let td = r.insertCell(0);
