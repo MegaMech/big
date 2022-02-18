@@ -48,24 +48,63 @@ function menu()
     }
     return true;
 }
-
+let timer = null;
 function displayComic() {
     minimizeNav();
     comic(0);
+    
     // On PC
     if (screen.width >= 800)
     {
-        document.addEventListener('mousemove', e => {
-            //if (timer) {
-            //    clearTimeout(timer);
-            //}
-            //timer=setTimeout(mouseStopped,300);
-        });
+        document.addEventListener('mousemove', mouseMoveEvent);
     }
 }
 
+function mouseMoveEvent() {
+    if (timer != null) {
+        clearTimeout(timer);
+        timer = null;
+    }
+
+    // Move UI depending on where mouse is on screen
+    if (window.event.clientY < window.innerHeight / 2) {
+        document.getElementById("gui").style.top = 0;
+        document.getElementById("gui").style.bottom = "";
+        document.getElementById("gui").style.borderBottomLeftRadius = "12px";
+        document.getElementById("gui").style.borderBottomRightRadius = "12px";
+        document.getElementById("gui").style.borderTopLeftRadius = "0px";
+        document.getElementById("gui").style.borderTopRightRadius = "0px";
+    } else {
+        document.getElementById("gui").style.bottom = 0;
+        document.getElementById("gui").style.top = "";
+        document.getElementById("gui").style.borderTopLeftRadius = "12px";
+        document.getElementById("gui").style.borderTopRightRadius = "12px";
+        document.getElementById("gui").style.borderBottomLeftRadius = "0px";
+        document.getElementById("gui").style.borderBottomRightRadius = "0px";
+    }
+    
+    document.getElementById("gui").style.display = "flex";
+
+    setTimeout(() => {
+        document.getElementById("gui").style.opacity = 1;
+    }, 10);
+
+    timer=setTimeout(mouseStopped, 1000);
+}
+
 function mouseStopped(){                                 // the actual function that is called
+    document.getElementById("gui").style.opacity = 0;
+    setTimeout(() => {
+        document.getElementById("gui").style.display = "none";
+    }, 200);
+    
+}
+
+function gotoMenu() {
+    document.removeEventListener('mousemove', mouseMoveEvent)
     document.getElementById("gui").style.display = "none";
+    document.getElementsByClassName("comic")[0].style.backgroundImage = "none";
+    maximizeNav();
 }
 
 function minimizeNav() {
@@ -91,6 +130,7 @@ var width;
 var heighth;
 function comic(direction)
 {
+    mouseMoveEvent();
     position += direction;
     if (position === -1) {position = comicsLength - 1;}
     if (position === comicsLength) {position = 0;}
@@ -103,7 +143,7 @@ function comic(direction)
     //document.getElementById("comicTitle").innerHTML = comics[position].Title;
     //document.getElementById("comicDate").innerHTML = comics[position].Date;
 }
-
+/*
 function getMeta(url) {
     const img = new Image();
     img.addEventListener("load", function() {
@@ -113,7 +153,7 @@ function getMeta(url) {
     img.src = url;
     return img.src;
 }
-
+*/
 function footerLink()
 {
     var o = "ew";

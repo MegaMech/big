@@ -84,21 +84,21 @@ nav a
     margin-left: auto;
     margin-right: auto;
 }
-button {
-    background-color: #090023;
+.menuButtons {
+    background-color: lightslategrey;
     border: none;
-    border-radius: 7px;
-    width: 500px;
+    border-radius: 12px;
+    width: 400px;
     height: 200px;
     font-size: 2em;
     transition-duration: 0.2s;
     cursor: pointer;
 }
-button:hover {
-    background-color: #080023;   
+.menuButtons:hover {
+    background-color: darkslategrey;   
 }
-button:active {
-    padding-top: 1px;
+.menuButtons:active {
+    margin-top: 2px;
 }
 .desktopLinkWrapper
 {
@@ -177,8 +177,27 @@ main
     background-color: inherit;
 }
 #gui {
+    display: none;
+    justify-content: space-between;
+    opacity: 0;
     position: absolute;
+    width: 550px;
+    height: 90px;
     bottom: 0;
+    transition: opacity 0.2s;
+    left: 50%;
+    transform: translate(-50%, 0);
+    background-color: rgba(255, 255, 255, 0.2);
+    border-top-right-radius: 12px;
+    border-top-left-radius: 12px;
+}
+#comicMenuButton {
+    display: inline-block;
+    width: 90px;
+    cursor: pointer;
+}
+#comicMenuButton:active {
+    margin-top: 2px;
 }
 p {
     padding-left: 10px;
@@ -218,15 +237,13 @@ user-drag: none;
 {
     position: relative;
     z-index: 12;
-    opacity: 0;
-    transition: opacity 0.2s;
     width: 90px;
     top: 50%;
     transform: translateY(-50%);
+    cursor: pointer;
 }
 .comicArrows:hover
 {
-    opacity: 1;
 }
 .comicArrows:active
 {

@@ -33,16 +33,17 @@
     <div id="contentDisplay" style="opacity: 0; z-index: -1; transition: opacity 0.2s linear;">
         <div class="comic">
             <nav>
-                <img src="logo.png" alt="The Great Big Dig">
+                <img src="icons/logo.png" alt="The Great Big Dig">
                 <div id=buttons>
-                    <button>Archive</button>
-                    <button onclick="displayComic();">This weeks comic</button>
+                    <button class="menuButtons">Comic Archive</button>
+                    <button class="menuButtons" onclick="displayComic();">Latest Comic</button>
                 </div>
             </nav>
             <div id="gui">
                 
-                <img src="arrowL.png" onclick="return comic(-1);" draggable="false" class="comicArrows" style="float: left; margin-left: 10px;"/>
-                <img src="arrowR.png" onclick="return comic(1);" draggable="false" class="comicArrows" style="float: right; margin-right: 10px;" />
+                <img src="icons/arrow_left.svg" onclick="return comic(-1);" draggable="false" class="comicArrows" style="float: left; margin-left: 10px; padding-right: 10px;"/>
+                <img src="icons/menu.svg" id="comicMenuButton" onclick="return gotoMenu();" />
+                <img src="icons/arrow_right.svg" style="display: inline-block;" onclick="return comic(1);" draggable="false" class="comicArrows" style="float: right; margin-right: 10px; padding-left: 10px;" />
             </div>
         </div>
     </div>
